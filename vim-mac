@@ -1,0 +1,69 @@
+set nocompatible              " required
+filetype off                  " required
+set number
+set ai
+set mouse=a
+set backspace=indent,eol,start
+set clipboard=unnamed
+syntax on
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'preservim/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-syntastic/syntastic'
+Plugin 'cburroughs/pep8.py'
+Plugin 'sansyrox/vim-python-virtualenv'
+Plugin 'frazrepo/vim-rainbow'
+Plugin 'xuyuanp/nerdtree-git-plugin'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'valloric/youcompleteme'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'mattn/emmet-vim'
+Plugin 'sekel/vim-vue-syntastic'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'groovy.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'pixelneo/vim-python-docstring'
+
+" add all your plugins here (note older versions of Vundle
+" used Bundle instead of Plugin)
+
+autocmd Filetype *.py set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+autocmd Filetype *.py set errorformat=%f:%l:\ %m
+colorscheme synthwave
+
+let python_highlight_all=1
+let g:rainbow_active=1
+
+" ...
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+execute pathogen#infect()
+au FileType python setlocal formatprg=autopep8\ -
+
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+" indent guides configuration
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red  ctermbg=5
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=2
+
